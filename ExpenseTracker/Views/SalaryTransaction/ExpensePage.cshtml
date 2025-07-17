@@ -1,0 +1,50 @@
+﻿@model ExpenseTrackerDAL.ViewModel.ExpensesSalaryVM
+
+<h2>My Expenses</h2>
+
+<!-- Display Salary Information -->
+<h3>Salary Information</h3>
+<p>Month:@Model.Salary.Month</p>
+<p>Total Salary:NPR @Model.Salary.TotalAmount.ToString()</p>
+<p>Remaining Salary:NPR @Model.Salary.RemainingAmount.ToString()</p>
+
+
+<form method="post" asp-action="AddExpense" asp-controller="SalaryTransaction">
+    <div id="addbox">
+        <div class="mt-3">
+            <label class="form-label">Expense</label>
+            <input type="text" class="form-control" asp-for="NewExpense.Title" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Amount Spended</label>
+            <input type="text" class="form-control" asp-for="NewExpense.Amount" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Add Expense</button>
+    </div>
+</form>
+
+
+<!-- Display Expenses -->
+<h3>Expenses</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expense in Model.Expenses)
+        {
+            <tr>
+                <td>@expense.Title</td>
+                <td>NPR @expense.Amount.ToString()</td>
+                <td>@expense.ExpenseDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
