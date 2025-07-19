@@ -31,6 +31,16 @@ namespace ExpenseTrackerDAL.Repository
 
             return result;
         }
+        public async Task<IEnumerable<Expenses>> GetAllExpenseBySalaryid(int salaryid)
+        {
+            string sql = @"SELECT * 
+                   FROM Expenses
+                   WHERE SalaryId = @salaryID"; ;
+
+            var result = await _db.GetData<Expenses, dynamic>(sql, new { salaryID = salaryid });
+
+            return result;
+        }
         public async Task<Salary> GetSalaryByUserid(int user)
         {
             string sql = @"SELECT * 
@@ -39,6 +49,17 @@ namespace ExpenseTrackerDAL.Repository
 
             var result = await _db.GetData<Salary, dynamic>(sql, new { userID = user });
 
+            return result.FirstOrDefault();
+        }
+
+        public async Task<Salary> GetSalaryByUseridandMonth(int user,string Month)
+        {
+            string sql = @"SELECT * 
+                   FROM Salary
+                   WHERE Month=@month AND UserId = @userID" ; ;
+
+            var result = await _db.GetData<Salary, dynamic>(sql, new { userID = user ,month =Month});
+             
             return result.FirstOrDefault();
         }
 
@@ -53,6 +74,17 @@ namespace ExpenseTrackerDAL.Repository
             return expenses;
 
 
+        }
+
+
+        public async Task<Salary> AddSalary(Salary Salary)
+        {
+            string sql = @"INSERT INTO Salary(Month, TotalAmount, RemainingAmount, UserId)
+                           VALUES (@month, @totalamount, @remainingamount, @userid)";
+
+            await _db.SaveData(sql,Salary);
+
+            return Salary;
         }
     }
 }

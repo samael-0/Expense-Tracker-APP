@@ -13,5 +13,10 @@ namespace ExpenseTrackerDAL.Repository
         Task<IEnumerable<Expenses>> GetAllExpenseByUserid(int user);
         Task<Salary> GetSalaryByUserid(int user);
         Task<Expenses> AddExpenses(Expenses expenses);
+        Task<Salary> AddSalary(Salary Salary);
+
+        Task<Salary> GetSalaryByUseridandMonth(int user, string Month);
+
+        Task<IEnumerable<Expenses>> GetAllExpenseBySalaryid(int salaryid);
     }
 }

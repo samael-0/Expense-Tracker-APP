@@ -15,5 +15,7 @@ namespace ExpenseTrackerDAL.ViewModel
         public IEnumerable<Expenses> Expenses { get; set; }
 
         public Expenses NewExpense { get; set; }
+
+        public string MonthYear { get; set; }
     }
 }
