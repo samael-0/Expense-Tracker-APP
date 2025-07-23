@@ -5,9 +5,13 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #f9fafb;
         margin: 0;
-        padding: 30px;
+        padding: 20px;
         color: #333;
     }
+
+  /*   #pageContentWrapper {
+        padding: 30px;
+    } */
 
     form {
         max-width: 400px;
@@ -67,7 +71,8 @@
 
 </style>
 
-<div>
+<div id="pageContentWrapper">
+    <div>
 
     <form method="post" asp-action="AddSalary" asp-controller="SalaryTransaction" id="addSalaryForm">
 
@@ -201,6 +206,7 @@
         <button type="submit" class="btn btn-primary mt-3">Add </button>
 
     </form>
+</div>
 </div>
 
 

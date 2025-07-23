@@ -15,9 +15,7 @@ This is a asp.net mvc project which is stil in developement.
 
 
 
-## NOTE
 
-THIS PROJECT IS IN DEMO VERSION THE RAZOR PAGES HAS NOT BEEN STYLED . WILL BE UPDATED IN FURTHER DATES
 
 
 ## Tech Stack
@@ -25,3 +23,52 @@ THIS PROJECT IS IN DEMO VERSION THE RAZOR PAGES HAS NOT BEEN STYLED . WILL BE UP
 **Client:** ASP.NET MVC RAZOR VIEW, CSS
 
 **Server:** ASP.NET 9 MVC, MYSQL, DAPPER
+
+
+# Expense Tracker Project
+
+This project is an Expense Tracker web application built with ASP.NET MVC.
+
+## Features
+- User Login
+- Homepage with salary summary
+- Expense tracking and management
+- Add new salary and expenses
+
+---
+
+## NOTE
+
+THIS PROJECT IS STILL IN DEVELOPMENT SO MORE FEATURES WILL BE ADDED SOON
+
+---
+
+## Screenshots
+
+### Login Page
+
+![Login Page](./ScreenShots/LoginSS.png)
+
+---
+
+### Homepage
+
+![Homepage](./ScreenShots/indexSS.png)
+
+---
+
+### Expense Page
+
+![Expense Page](./ScreenShots/ExpenseSS.png)
+
+---
+
+### Add Salary Page
+
+![Add Salary Page](./ScreenShots/AddSalarySS.png)
+
+---
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
