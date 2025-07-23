@@ -1,8 +1,92 @@
-﻿@{
+﻿@model ExpenseTrackerDAL.Models.Salary
+@{
     ViewData["Title"] = "Home Page";
+    var FullName = Context.Session.GetString("FullName");
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh;
+        }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .landing-container {
+            background: #fff;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            margin-top: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #3b3b3b;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="landing-container">
+            @if (!string.IsNullOrEmpty(FullName))
+            {
+                <h1>Welcome, @FullName!</h1>
+            }
+            else
+            {
+                <h1>Welcome, Guest!</h1>
+            }
+
+            @if (Model != null)
+            {
+                <p>
+                    Your remaining salary for <span class="highlight">@Model.Month</span> is:<br />
+                    <span class="highlight">NPR @Model.RemainingAmount.ToString("N2")</span>
+                </p>
+            }
+            else
+            {
+                <p>No salary information available for this month.</p>
+            }
+
+            <div class="footer">
+                Expense Tracker System • Built with ASP.NET MVC
+            </div>
+        </div>
+    </div>
+</body>
+</html>

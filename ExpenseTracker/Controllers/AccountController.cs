@@ -2,6 +2,7 @@
 using ExpenseTrackerDAL.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ExpenseTracker.Controllers
 {
     public class AccountController : Controller
@@ -43,6 +44,7 @@ namespace ExpenseTracker.Controllers
             {
                 HttpContext.Session.SetString("UserEmail", user.Email);
                 HttpContext.Session.SetInt32("UserId", user.UserId);
+                HttpContext.Session.SetString("FullName", user.FullName);
                 return RedirectToAction("Index", "Home");
             }
             else
