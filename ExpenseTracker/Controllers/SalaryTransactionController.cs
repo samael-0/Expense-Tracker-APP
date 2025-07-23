@@ -59,16 +59,27 @@ namespace ExpenseTracker.Controllers
                 int userId = (int)session.GetInt32("UserId");
 
                 var salary = await _salaryRepository.GetSalaryByUseridandMonth(userId, month);
-                var expenses = await _salaryRepository.GetAllExpenseBySalaryid(salary.Id);
-                
-
-                var expensesSalaryVM = new ExpensesSalaryVM
+                if (salary != null)
                 {
-                    Salary = salary,
-                    Expenses = expenses,
-                    NewExpense = new Expenses()
-                };
-                return View("ExpensePage", expensesSalaryVM);
+                    var expenses = await _salaryRepository.GetAllExpenseBySalaryid(salary.Id);
+
+
+                    var expensesSalaryVM = new ExpensesSalaryVM
+                    {
+                        Salary = salary,
+                        Expenses = expenses,
+                        NewExpense = new Expenses()
+                    };
+                    return View("ExpensePage", expensesSalaryVM);
+                }
+                else
+                {
+                    TempData["message"] = "No salary found for the selected month.";
+                    return RedirectToAction("ExpensePage");
+
+
+                }
+                
 
             }
 
